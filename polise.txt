@@ -1,0 +1,29 @@
+Korisni likovi:
+https://www.ibm.com/support/knowledgecenter/SSMKHH_10.0.0/com.ibm.etools.mft.doc/bn34250_.html
+https://www.ibm.com/support/knowledgecenter/SSMKHH_10.0.0/com.ibm.etools.mft.doc/bi62000_.html
+https://www.ibm.com/support/knowledgecenter/SSMKHH_10.0.0/com.ibm.etools.mft.doc/bj58320_.html
+
+Kreiranje polise:
+mqsicreatepolicy IBNODE -t WorkloadManagement -l wlm_policy -f my_policy.xml
+
+-t policyType
+   Tip polise koju želimo da kreiramo. Moguce opcije su: MQEndpoint, MQTTPublish, MQTTSubscribe, and WorkloadManagement.
+-l policyName
+   Ime polise koju kreiramo.
+-f policyDocument
+   Fajl koji sadrži definiciju polise.
+   
+Provera koje polise postoje:
+mqsireportpolicy IBNODE -t WorkloadManagement -a
+
+Attach polise:
+mqsiattachpolicy IBNODE -t WorkloadManagement -e default -k testapplication -m testmflow -l OH_WorkloadPolicy_08
+
+-e integrationServerName
+   Ime execution grupe.
+-m messageFlow
+   Ime message flow-a na koga primenjujemo polisu.
+-k application
+   Ime apliakcije u kojoj se nalazi message flow.
+-y library
+   Ime biblioteke u kojoj se nalazi message flow.
